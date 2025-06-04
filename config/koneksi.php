@@ -1,11 +1,18 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "db_admin";
+$server     = 'localhost';
+$user_id    = 'root';
+$pass       = '';
+$database   = 'db_kampus';
 
-$conn = new mysqli($host, $user, $pass, $db);
+// koneksi database mysql
+$koneksi = mysqli_connect($server, $user_id, $pass, $database);
 
-if ($conn->connect_error) {
-  die("Koneksi gagal: " . $conn->connect_error);
+
+// cek koneksi
+if (!$koneksi) {
+    die("Database Tidak Terhubung! " . mysqli_connect_error());
 }
+// else {
+//     echo "Database Terhubung.";
+// }
+?>
