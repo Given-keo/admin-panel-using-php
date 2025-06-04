@@ -1,963 +1,391 @@
 <?php 
 session_start();
-
-    if(!isset($_SESSION['username']) || !isset($_SESSION['role'])):
+    if(!isset($_SESSION['username']) || !isset($_SESSION['level'])):
     header('Location: index.php');
     exit;
-else:
+  else:
 ?>
 
 
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Dashboard | SIAKAD</title>
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800" rel="stylesheet">
-        
-        <link rel="stylesheet" href="plugins/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-        <link rel="stylesheet" href="plugins/icon-kit/dist/css/iconkit.min.css">
-        <link rel="stylesheet" href="plugins/ionicons/dist/css/ionicons.min.css">
-        <link rel="stylesheet" href="plugins/perfect-scrollbar/css/perfect-scrollbar.css">
-        <link rel="stylesheet" href="plugins/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
-        <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap.css">
-        <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css">
-        <link rel="stylesheet" href="plugins/weather-icons/css/weather-icons.min.css">
-        <link rel="stylesheet" href="plugins/c3/c3.min.css">
-        <link rel="stylesheet" href="plugins/owl.carousel/dist/assets/owl.carousel.min.css">
-        <link rel="stylesheet" href="plugins/owl.carousel/dist/assets/owl.theme.default.min.css">
-        <link rel="stylesheet" href="dist/css/theme.min.css">
-        <script src="src/js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
+<!DOCTYPE html>
+  <html lang="en">
 
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" /> -->
+    <title>Dashboard | Booking Gunung</title>
 
-       <?php
-       include 'header.php';
-       ?>
+    <!-- Font & Style -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet"/>
+  </head>
 
-           <?php
-           include 'menu_kiri.php';
-           ?>
-                <div class="main-content">
-                    <div class="container-fluid">
-                        <div class="row clearfix">
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="widget">
-                                    <div class="widget-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="state">
-                                                <h6>Pertumbuhan Mahasiswa</h6>
-                                                <h2>1756 Mahasiswa</h2>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="ik ik-award"></i>
-                                            </div>
-                                        </div>
-                                        <small class="text-small mt-10 d-block">12% bertumbuh dari tahun lalu</small>
-                                    </div>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="widget">
-                                    <div class="widget-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="state">
-                                                <h6>Link Matakuliah & Industri</h6>
-                                                <h2>21 <br> Matakuliah</h2>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="ik ik-thumbs-up"></i>
-                                            </div>
-                                        </div>
-                                        <small class="text-small mt-10 d-block">98% Matakuliah link dengan industri</small>
-                                    </div>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="widget">
-                                    <div class="widget-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="state">
-                                                <h6>Kualifikasi Dosen/Pengajar</h6>
-                                                <h2>118  <br>  Dosen</h2>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="ik ik-calendar"></i>
-                                            </div>
-                                        </div>
-                                        <small class="text-small mt-10 d-block">97% telah bersertifikat Dosen</small>
-                                    </div>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" style="width: 31%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6 col-sm-12">
-                                <div class="widget">
-                                    <div class="widget-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="state">
-                                                <h6>Penghargaan Mahasiswa</h6>
-                                                <h2>54  <br>  Penghargaan</h2>
-                                            </div>
-                                            <div class="icon">
-                                                <i class="ik ik-message-square"></i>
-                                            </div>
-                                        </div>
-                                        <small class="text-small mt-10 d-block">92% Penghargaan Masuk 3 Besar</small>
-                                    </div>
-                                    <div class="progress progress-sm">
-                                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="row">
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-8 col-md-12">
-                                                <h3 class="card-title">Visitors By Countries</h3>
-                                                <div id="visitfromworld" style="width:100%; height:350px"></div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-12">
-                                                <div class="row mb-15">
-                                                    <div class="col-9">India</div>
-                                                    <div class="col-3 text-right">28%</div>
-                                                    <div class="col-12">
-                                                        <div class="progress progress-sm mt-5">
-                                                            <div class="progress-bar bg-green" role="progressbar" style="width: 48%" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-15">
-                                                    <div class="col-9"> UK</div>
-                                                    <div class="col-3 text-right">21%</div>
-                                                    <div class="col-12">
-                                                        <div class="progress progress-sm mt-5">
-                                                            <div class="progress-bar bg-aqua" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-15">
-                                                    <div class="col-9"> USA</div>
-                                                    <div class="col-3 text-right">18%</div>
-                                                    <div class="col-12">
-                                                        <div class="progress progress-sm mt-5">
-                                                            <div class="progress-bar bg-purple" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-9">China</div>
-                                                    <div class="col-3 text-right">12%</div>
-                                                    <div class="col-12">
-                                                        <div class="progress progress-sm mt-5">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" style="min-height: 422px;">
-                                    <div class="card-header"><h3>Donut chart</h3></div>
-                                    <div class="card-body">
-                                        <div id="c3-donut-chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+  <body id="page-top">
 
-                        <!-- <div class="row">
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h3>Recent Chat</h3>
-                                        <div class="card-header-right">
-                                            <ul class="list-unstyled card-option">
-                                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
-                                                <li><i class="ik ik-minus minimize-card"></i></li>
-                                                <li><i class="ik ik-x close-card"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body chat-box scrollable" style="height:300px;">
-                                        <ul class="chat-list">
-                                            <li class="chat-item">
-                                                <div class="chat-img"><img src="img/users/1.jpg" alt="user"></div>
-                                                <div class="chat-content">
-                                                    <h6 class="font-medium">James Anderson</h6>
-                                                    <div class="box bg-light-info">Lorem Ipsum is simply dummy text of the printing &amp; type setting industry.</div>
-                                                </div>
-                                                <div class="chat-time">10:56 am</div>
-                                            </li>
-                                            <li class="chat-item">
-                                                <div class="chat-img"><img src="img/users/2.jpg" alt="user"></div>
-                                                <div class="chat-content">
-                                                    <h6 class="font-medium">Bianca Doe</h6>
-                                                    <div class="box bg-light-info">It’s Great opportunity to work.</div>
-                                                </div>
-                                                <div class="chat-time">10:57 am</div>
-                                            </li>
-                                            <li class="odd chat-item">
-                                                <div class="chat-content">
-                                                    <div class="box bg-light-inverse">I would love to join the team.</div>
-                                                    <br>
-                                                </div>
-                                            </li>
-                                            <li class="odd chat-item">
-                                                <div class="chat-content">
-                                                    <div class="box bg-light-inverse">Whats budget of the new project.</div>
-                                                    <br>
-                                                </div>
-                                                <div class="chat-time">10:59 am</div>
-                                            </li>
-                                            <li class="chat-item">
-                                                <div class="chat-img"><img src="img/users/3.jpg" alt="user"></div>
-                                                <div class="chat-content">
-                                                    <h6 class="font-medium">Angelina Rhodes</h6>
-                                                    <div class="box bg-light-info">Well we have good budget for the project</div>
-                                                </div>
-                                                <div class="chat-time">11:00 am</div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-footer chat-footer">
-                                        <div class="input-wrap">
-                                            <input type="text" placeholder="Type and enter" class="form-control">
-                                        </div>
-                                        <button type="button" class="btn btn-icon btn-theme"><i class="fa fa-paper-plane"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <h4 class="card-title">Weather Report</h4>
-                                            <select class="form-control w-25 ml-auto">
-                                                <option selected="">Today</option>
-                                                <option value="1">Weekly</option>
-                                            </select>
-                                        </div>
-                                        <div class="d-flex align-items-center flex-row mt-30">
-                                            <div class="p-2 f-50 text-info"><i class="wi wi-day-showers"></i> <span>23<sup>°</sup></span></div>
-                                            <div class="p-2">
-                                            <h3 class="mb-0">Saturday</h3><small>Banglore, India</small></div>
-                                        </div>
-                                        <table class="table table-borderless">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Wind</td>
-                                                    <td class="font-medium">ESE 17 mph</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Humidity</td>
-                                                    <td class="font-medium">83%</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Pressure</td>
-                                                    <td class="font-medium">28.56 in</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <hr>
-                                        <ul class="list-unstyled row text-center city-weather-days mb-0 mt-20">
-                                            <li class="col"><i class="wi wi-day-sunny mr-5"></i><span>09:30</span><h3>20<sup>°</sup></h3></li>
-                                            <li class="col"><i class="wi wi-day-cloudy mr-5"></i><span>11:30</span><h3>22<sup>°</sup></h3></li>
-                                            <li class="col"><i class="wi wi-day-hail mr-5"></i><span>13:30</span><h3>25<sup>°</sup></h3></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card" style="min-height: 422px;">
-                                    <div class="card-header">
-                                        <h3>Timeline</h3>
-                                        <div class="card-header-right">
-                                            <ul class="list-unstyled card-option">
-                                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
-                                                <li><i class="ik ik-minus minimize-card"></i></li>
-                                                <li><i class="ik ik-x close-card"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="card-body timeline">
-                                        <div class="header bg-theme" style="background-image: url('img/placeholder/placeimg_400_200_nature.jpg')">
-                                            <div class="color-overlay d-flex align-items-center">
-                                                <div class="day-number">8</div>
-                                                <div class="date-right">
-                                                    <div class="day-name">Monday</div>
-                                                    <div class="month">February 2018</div>
-                                                </div>
-                                            </div>                                
-                                        </div>
-                                        <ul>
-                                            <li>
-                                                <div class="bullet bg-pink"></div>
-                                                <div class="time">11am</div>
-                                                <div class="desc">
-                                                    <h3>Attendance</h3>
-                                                    <h4>Computer Class</h4>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="bullet bg-green"></div>
-                                                <div class="time">12pm</div>
-                                                <div class="desc">
-                                                    <h3>Design Team</h3>
-                                                    <h4>Hangouts</h4>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="bullet bg-orange"></div>
-                                                <div class="time">2pm</div>
-                                                <div class="desc">
-                                                    <h3>Finish</h3>
-                                                    <h4>Go to Home</h4>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
+      <!-- Sidebar -->
+      <?php include "side_bar.php"; ?>
+      <!-- End of Sidebar -->
 
-                        <div class="card">
-                            <div class="card-header row">
-                                <div class="col col-sm-3">
-                                    <div class="dropdown d-inline-block">
-                                        <a class="btn-icon checkbox-dropdown dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                                        <div class="dropdown-menu" aria-labelledby="moreDropdown">
-                                            <a class="dropdown-item" id="checkbox_select_all" href="javascript:void(0);">Select All</a>
-                                            <a class="dropdown-item" id="checkbox_deselect_all" href="javascript:void(0);">Deselect All</a>
-                                        </div>
-                                    </div>
-                                    <div class="card-options d-inline-block">
-                                        <a href="#"><i class="ik ik-inbox"></i></a>
-                                        <a href="#"><i class="ik ik-plus"></i></a>
-                                        <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                                        <div class="dropdown d-inline-block">
-                                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">More Action</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-sm-6">
-                                    <div class="card-search with-adv-search dropdown">
-                                        <form action="">
-                                            <input type="text" class="form-control" placeholder="Search.." required>
-                                            <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                                            <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                            <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Full Name">
-                                                </div>
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" placeholder="Email">
-                                                </div>
-                                                <button class="btn btn-theme">Search</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col col-sm-3">
-                                    <div class="card-options text-right">
-                                        <span class="mr-5">1 - 50 of 2,500</span>
-                                        <a href="#"><i class="ik ik-chevron-left"></i></a>
-                                        <a href="#"><i class="ik ik-chevron-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body p-0">
-                                <div class="list-item-wrap">
-                                    <div class="list-item">
-                                        <div class="item-inner">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option1">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                            </label>
-                                            <div class="list-title"><a href="javascript:void(0)">Informasi Pengisian KRS akan dimulai Pada tanggal 3 Maret sampai dengan 20 Maret 2025. Melalui laman GAIS</a></div>
-                                            <div class="list-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="#"><i class="ik ik-inbox"></i></a>
-                                                <a href="#"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </div>
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column bg-gradient-light">
 
-                                        <div class="qickview-wrap">
-                                            <div class="desc">
-                                                <p>Pembagian KHS oleh orang tua akan dilaksanakan pada 18 Agustus 2025 .</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item">
-                                        <div class="item-inner">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option2">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                            </label>
-                                            <div class="list-title"><a href="javascript:void(0)">Pengumuman Kibur Lebaran akan disampaikan paling lambat 2 minggu sebelumnya.</a></div>
-                                            <div class="list-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="#"><i class="ik ik-inbox"></i></a>
-                                                <a href="#"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="qickview-wrap">
-                                            <div class="desc">
-                                                <p>Fusce suscipit turpis a dolor posuere ornare at a ante. Quisque nec libero facilisis, egestas tortor eget, mattis dui. Curabitur viverra laoreet ligula at hendrerit. Nullam sollicitudin maximus leo, vel pulvinar orci semper id. Donec vehicula tempus enim a facilisis. Proin dignissim porttitor sem, sed pulvinar tortor gravida vitae.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-item">
-                                        <div class="item-inner">
-                                            <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="item_checkbox" name="item_checkbox" value="option3">
-                                                <span class="custom-control-label">&nbsp;</span>
-                                            </label>
-                                            <div class="list-title"><a href="javascript:void(0)">Pembagian KHS oleh Orang Tua akan dilaksanakan pada tanggal 18 Agustus 2015.</a></div>
-                                            <div class="list-actions">
-                                                <a href="#"><i class="ik ik-eye"></i></a>
-                                                <a href="#"><i class="ik ik-inbox"></i></a>
-                                                <a href="#"><i class="ik ik-edit-2"></i></a>
-                                                <a href="#"><i class="ik ik-trash-2"></i></a>
-                                            </div>
-                                        </div>
-                                        <div class="qickview-wrap">
-                                            <div class="desc">
-                                                <p>Fusce suscipit turpis a dolor posuere ornare at a ante. Quisque nec libero facilisis, egestas tortor eget, mattis dui. Curabitur viverra laoreet ligula at hendrerit. Nullam sollicitudin maximus leo, vel pulvinar orci semper id. Donec vehicula tempus enim a facilisis. Proin dignissim porttitor sem, sed pulvinar tortor gravida vitae.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="card">
-                            <div class="card-header row">
-                                <div class="col col-sm-3">
-                                    <div class="card-options d-inline-block">
-                                        <a href="#"><i class="ik ik-inbox"></i></a>
-                                        <a href="#"><i class="ik ik-plus"></i></a>
-                                        <a href="#"><i class="ik ik-rotate-cw"></i></a>
-                                        <div class="dropdown d-inline-block">
-                                            <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-more-horizontal"></i></a>
-                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="moreDropdown">
-                                                <a class="dropdown-item" href="#">Action</a>
-                                                <a class="dropdown-item" href="#">More Action</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col col-sm-6">
-                                    <div class="card-search with-adv-search dropdown">
-                                        <form action="">
-                                            <input type="text" class="form-control global_filter" id="global_filter" placeholder="Search.." required>
-                                            <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                                            <button type="button" id="adv_wrap_toggler" class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                            <div class="adv-search-wrap dropdown-menu dropdown-menu-right" aria-labelledby="adv_wrap_toggler">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col0_filter" placeholder="Name" data-column="0">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col1_filter" placeholder="Position" data-column="1">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col2_filter" placeholder="Office" data-column="2">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col3_filter" placeholder="Age" data-column="3">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col4_filter" placeholder="Start date" data-column="4">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control column_filter" id="col5_filter" placeholder="Salary" data-column="5">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button class="btn btn-theme">Search</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                                <div class="col col-sm-3">
-                                    <div class="card-options text-right">
-                                        <span class="mr-5" id="top">1 - 50 of 2,500</span>
-                                        <a href="#"><i class="ik ik-chevron-left"></i></a>
-                                        <a href="#"><i class="ik ik-chevron-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-body">
-                                <table id="advanced_table" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="nosort" width="10">
-                                                <label class="custom-control custom-checkbox m-0">
-                                                    <input type="checkbox" class="custom-control-input" id="selectall" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </th>
-                                            <th class="nosort">Avatar</th>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/1.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/2.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/3.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/4.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/5.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/1.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>New York</td>
-                                            <td>61</td>
-                                            <td>2012/12/02</td>
-                                            <td>$372,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/2.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>San Francisco</td>
-                                            <td>59</td>
-                                            <td>2012/08/06</td>
-                                            <td>$137,500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/3.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            <td>Tokyo</td>
-                                            <td>55</td>
-                                            <td>2010/10/14</td>
-                                            <td>$327,900</td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input select_all_child" id="" name="" value="option2">
-                                                    <span class="custom-control-label">&nbsp;</span>
-                                                </label>
-                                            </td>
-                                            <td><img src="img/users/4.jpg" class="table-user-thumb" alt=""></td>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            <td>San Francisco</td>
-                                            <td>39</td>
-                                            <td>2009/09/15</td>
-                                            <td>$205,500</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div> -->
-                    </div>
+        <!-- Main Content -->
+        <div id="content">
+
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-dark bg-primary topbar mb-4 static-top shadow">
+
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            <h4 class="text-light">Dashboard Admin Panel</h4>
+            <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+              <div class="input-group">
+                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button class="btn btn-secondary" type="button">
+                    <i class="fas fa-search fa-sm"></i>
+                  </button>
                 </div>
+              </div>
+            </form> -->
 
-                <aside class="right-sidebar">
-                    <div class="sidebar-chat" data-plugin="chat-sidebar">
-                        <div class="sidebar-chat-info">
-                            <h6>Chat List</h6>
-                            <form class="mr-t-10">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Search for friends ..."> 
-                                    <i class="ik ik-search"></i>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="chat-list">
-                            <div class="list-group row">
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Gene Newman">
-                                    <figure class="user--online">
-                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Gene Newman</span>  <span class="username">@gene_newman</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Billy Black">
-                                    <figure class="user--online">
-                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Billy Black</span>  <span class="username">@billyblack</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Herbert Diaz">
-                                    <figure class="user--online">
-                                        <img src="img/users/3.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Herbert Diaz</span>  <span class="username">@herbert</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Sylvia Harvey">
-                                    <figure class="user--busy">
-                                        <img src="img/users/4.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Sylvia Harvey</span>  <span class="username">@sylvia</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item active" data-chat-user="Marsha Hoffman">
-                                    <figure class="user--busy">
-                                        <img src="img/users/5.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Marsha Hoffman</span>  <span class="username">@m_hoffman</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Mason Grant">
-                                    <figure class="user--offline">
-                                        <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Mason Grant</span>  <span class="username">@masongrant</span> </span>
-                                </a>
-                                <a href="javascript:void(0)" class="list-group-item" data-chat-user="Shelly Sullivan">
-                                    <figure class="user--offline">
-                                        <img src="img/users/2.jpg" class="rounded-circle" alt="">
-                                    </figure><span><span class="name">Shelly Sullivan</span>  <span class="username">@shelly</span></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
 
-                <div class="chat-panel" hidden>
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <a href="javascript:void(0);"><i class="ik ik-message-square text-success"></i></a>  
-                            <span class="user-name">John Doe</span> 
-                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        </div>
-                        <div class="card-body">
-                            <div class="widget-chat-activity flex-1">
-                                <div class="messages">
-                                    <div class="message media reply">
-                                        <figure class="user--online">
-                                            <a href="#">
-                                                <img src="img/users/3.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>Epic Cheeseburgers come in all kind of styles.</p>
-                                        </div>
-                                    </div>
-                                    <div class="message media">
-                                        <figure class="user--online">
-                                            <a href="#">
-                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>Cheeseburgers make your knees weak.</p>
-                                        </div>
-                                    </div>
-                                    <div class="message media reply">
-                                        <figure class="user--offline">
-                                            <a href="#">
-                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>Cheeseburgers will never let you down.</p>
-                                            <p>They'll also never run around or desert you.</p>
-                                        </div>
-                                    </div>
-                                    <div class="message media">
-                                        <figure class="user--online">
-                                            <a href="#">
-                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>A great cheeseburger is a gastronomical event.</p>
-                                        </div>
-                                    </div>
-                                    <div class="message media reply">
-                                        <figure class="user--busy">
-                                            <a href="#">
-                                                <img src="img/users/5.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>There's a cheesy incarnation waiting for you no matter what you palete preferences are.</p>
-                                        </div>
-                                    </div>
-                                    <div class="message media">
-                                        <figure class="user--online">
-                                            <a href="#">
-                                                <img src="img/users/1.jpg" class="rounded-circle" alt="">
-                                            </a>
-                                        </figure>
-                                        <div class="message-body media-body">
-                                            <p>If you are a vegan, we are sorry for you loss.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="javascript:void(0)" class="card-footer" method="post">
-                            <div class="d-flex justify-content-end">
-                                <textarea class="border-0 flex-1" rows="1" placeholder="Type your message here"></textarea>
-                                <button class="btn btn-icon" type="submit"><i class="ik ik-arrow-right text-success"></i></button>
-                            </div>
-                        </form>
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
                     </div>
+                  </form>
                 </div>
+              </li>
 
-                <footer class="footer">
-                   <?php
-                   include 'footer.php'
-                   ?>
+              <!-- Nav Item - Alerts -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-bell fa-fw"></i>
+                  <!-- Counter - Alerts -->
+                  <span class="badge badge-danger badge-counter">3+</span>
+                </a>
+                <!-- Dropdown - Alerts -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                  <h6 class="dropdown-header">
+                    Alerts Center
+                  </h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-primary">
+                        <i class="fas fa-file-alt text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 12, 2019</div>
+                      <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-success">
+                        <i class="fas fa-donate text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 7, 2019</div>
+                      $290.29 has been deposited into your account!
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="mr-3">
+                      <div class="icon-circle bg-warning">
+                        <i class="fas fa-exclamation-triangle text-white"></i>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="small text-gray-500">December 2, 2019</div>
+                      Spending Alert: We've noticed unusually high spending for your account.
+                    </div>
+                  </a>
+                  <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                </div>
+              </li>
+
+              <!-- Nav Item - Messages -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-envelope fa-fw"></i>
+                  <!-- Counter - Messages -->
+                  <span class="badge badge-danger badge-counter">7</span>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                  <h6 class="dropdown-header">
+                    Message Center
+                  </h6>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                      <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                      <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                      <div class="status-indicator"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                      <div class="small text-gray-500">Jae Chun · 1d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                      <div class="status-indicator bg-warning"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                      <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item d-flex align-items-center" href="#">
+                    <div class="dropdown-list-image mr-3">
+                      <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                      <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div>
+                      <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                      <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    </div>
+                  </a>
+                  <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                </div>
+              </li>
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none text-light d-lg-inline small">Admin</span>
+                  <img class="img-profile rounded-circle" src="img/profile-img.png">
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <!-- <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Profile
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Settings
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Activity Log
+                  </a> -->
+                  <!-- <div class="dropdown-divider"></div> -->
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+                </div>
+              </li>
+
+            </ul>
+
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Page Content -->
+          <div class="container-fluid">
+
+            <!-- Heading -->
+            <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-dark font-weight-bold">Dashboard Booking Gunung</h1>
+            </div> -->
+
+            <!-- Banner Welcome -->
+            <div class="row mb-4">
+              <div class="col-md-12">
+                <div class="card bg-primary text-white shadow">
+                  <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                      <h5 class="font-weight-bold">Selamat Datang di Sistem Booking Gunung Bromo</h5>
+                      <p class="mb-0">Pantau jumlah pengunjung, harga tiket, dan kelola pemesanan dengan mudah.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        
-        
-        
 
-        <div class="modal fade apps-modal" id="appsModal" tabindex="-1" role="dialog" aria-labelledby="appsModalLabel" aria-hidden="true" data-backdrop="false">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="ik ik-x-circle"></i></button>
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="quick-search">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4 ml-auto mr-auto">
-                                    <div class="input-wrap">
-                                        <input type="text" id="quick-search" class="form-control" placeholder="Search..." />
-                                        <i class="ik ik-search"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Statistik Info -->
+            <div class="row">
+              <div class="col-xl-6 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Booking Hari Ini</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">72 Booking</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-calendar-check fa-2x text-gray-300"></i>
+                      </div>
                     </div>
-                    <div class="modal-body d-flex align-items-center">
-                        <div class="container">
-                            <div class="apps-wrap">
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-bar-chart-2"></i><span>Dashboard</span></a>
-                                </div>
-                                <div class="app-item dropdown">
-                                    <a href="#" class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-command"></i><span>Ui</span></a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-mail"></i><span>Message</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-users"></i><span>Accounts</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-shopping-cart"></i><span>Sales</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-briefcase"></i><span>Purchase</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-server"></i><span>Menus</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-clipboard"></i><span>Pages</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-message-square"></i><span>Chats</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-map-pin"></i><span>Contacts</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-box"></i><span>Blocks</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-calendar"></i><span>Events</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-bell"></i><span>Notifications</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-pie-chart"></i><span>Reports</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-layers"></i><span>Tasks</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-edit"></i><span>Blogs</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-settings"></i><span>Settings</span></a>
-                                </div>
-                                <div class="app-item">
-                                    <a href="#"><i class="ik ik-more-horizontal"></i><span>More</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
+              </div>
+
+              <div class="col-xl-6 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total Wisatawan Bulan Ini</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">1.234 Orang</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <!-- Tarif Tiket -->
+            <div class="row">
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs h3 font-weight-bold text-danger text-uppercase mb-1">Wisatawan Nusantara</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 54.000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-money-bill-wave fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Wisatawan Mancanegara</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 255.000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-globe-asia fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Kendaraan Roda 4</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 20.000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-car fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                  <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                      <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Kendaraan Roda 2</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">Rp. 10.000</div>
+                      </div>
+                      <div class="col-auto">
+                        <i class="fas fa-motorcycle fa-2x text-gray-300"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- /.container-fluid -->
+
+        </div> <!-- End of Main Content -->
+
+        <?php include "footer.php"; ?>
+
+      </div> <!-- End of Content Wrapper -->
+    </div> <!-- End of Page Wrapper -->
+
+    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal"><span>×</span></button>
         </div>
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script>window.jQuery || document.write('<script src="src/js/vendor/jquery-3.3.1.min.js"><\/script>')</script>
-        <script src="plugins/popper.js/dist/umd/popper.min.js"></script>
-        <script src="plugins/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="plugins/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
-        <script src="plugins/screenfull/dist/screenfull.js"></script>
-        <script src="plugins/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="plugins/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
-        <script src="plugins/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-        <script src="plugins/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-        <script src="plugins/jvectormap/jquery-jvectormap.min.js"></script>
-        <script src="plugins/jvectormap/tests/assets/jquery-jvectormap-world-mill-en.js"></script>
-        <script src="plugins/moment/moment.js"></script>
-        <script src="plugins/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
-        <script src="plugins/d3/dist/d3.min.js"></script>
-        <script src="plugins/c3/c3.min.js"></script>
-        <script src="js/tables.js"></script>
-        <script src="js/widgets.js"></script>
-        <script src="js/charts.js"></script>
-        <script src="dist/js/theme.min.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='https://www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-        </script>
-    </body>
+        <div class="modal-body">Pilih "Logout" untuk keluar dari sesi.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="proses-login/logout.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Script -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
+  </body>
+
 </html>
 
 
-<?php 
-endif; 
-?>
 
-
+<?php endif; ?>

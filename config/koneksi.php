@@ -1,18 +1,11 @@
 <?php
-$server     = 'localhost';
-$user_id    = 'root';
-$pass       = '';
-$database   = 'db_kampus';
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db   = "db_booking_gunung";
 
-// koneksi database mysql
-$koneksi = mysqli_connect($server, $user_id, $pass, $database);
+$conn = new mysqli($host, $user, $pass, $db);
 
-
-// cek koneksi
-if (!$koneksi) {
-    die("Database Tidak Terhubung! " . mysqli_connect_error());
+if ($conn->connect_error) {
+  die("Koneksi gagal: " . $conn->connect_error);
 }
-// else {
-//     echo "Database Terhubung.";
-// }
-?>
