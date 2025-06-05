@@ -64,7 +64,7 @@
         <a class="collapse-item" href="laporan_transaksi.php">Laporan Transaksi</a>
         <a class="collapse-item" href="laporan_booking.php">Laporan Booking</a>
         <a class="collapse-item" href="laporan_kuota.php">Laporan Kuota</a>
-        <a class="collapse-item" href="laporan_pendapatan.php">Laporan Pendapatan/Metode</a>
+        <a class="collapse-item" href="laporan_pendapatan.php">Laporan Pendapatan</a>
       </div>
     </div>
   </li>
